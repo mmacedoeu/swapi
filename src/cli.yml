@@ -1,0 +1,28 @@
+name: swapi
+author: "mmacedoeu <contato@mmacedo.eu.org>"
+about: Star Wars Api
+args:
+  - log:
+      short: l
+      value_name: LOG_PATTERN
+      help: Sets a custom logging
+      takes_value: true
+  - port:
+      short: p
+      value_name: PORT
+      help: Api tcp listener port, default to environment variable PORT or 8080
+      takes_value: true
+  - interface:
+      value_name: IP
+      help: Specify the hostname portion of the REST API server, IP should be an interface's IP address, or all (all interfaces) or local.
+      default_value: local   
+  - db:
+      value_name: db
+      help: Specify the base database storage path.
+      takes_value: true
+  - expire:
+      short: e
+      value_name: expire
+      help: Time in seconds for cache expiration. default 7 days.
+      takes_value: true
+      default_value: "604800"
