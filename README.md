@@ -113,7 +113,7 @@ Manual Testing is done with your preferred http client cli like [curl](https://g
 
 # Create
 
-`http POST :8080/sw name=Hoth climate=frozen terrain='tundra, ice caves, mountain ranges'
+`http POST :8080/sw name=Hoth climate=frozen terrain='tundra, ice caves, mountain ranges`
 
 ## Load testing
 
