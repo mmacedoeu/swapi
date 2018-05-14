@@ -13,11 +13,13 @@ args:
       help: Api tcp listener port, default to environment variable PORT or 8080
       takes_value: true
   - interface:
+      short: i
       value_name: IP
       help: Specify the hostname portion of the REST API server, IP should be an interface's IP address, or all (all interfaces) or local.
       default_value: local
       takes_value: true   
   - db:
+      short: db
       value_name: db
       help: Specify the base database storage path.
       takes_value: true

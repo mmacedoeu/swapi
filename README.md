@@ -32,11 +32,7 @@ Swapi is a CRSD Create Read Search Delete show case for the following features:
 
 To compile and install you need to first install Rust [compiler](https://www.rust-lang.org/en-US/install.html)
 
-`curl https://sh.rustup.rs -sSf | sh`
-
-Setup rust to work with [nightly](https://github.com/rust-lang-nursery/rustup.rs#working-with-nightly-rust) version:
-
-`rustup default nightly`
+`curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly-2018-05-10`
 
 Compile for release
 

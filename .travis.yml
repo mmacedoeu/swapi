@@ -1,7 +1,7 @@
 sudo: required
 language: rust
 rust:
-- nightly
+- nightly-2018-05-10
 notifications:
   email: false
 after_success:
