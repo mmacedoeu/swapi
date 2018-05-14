@@ -143,7 +143,7 @@ pub fn run<I, T>(args: I) -> Result<()> where
             // enable logger
             .middleware(middleware::Logger::default())
             .configure(|app| Cors::for_app(app)
-                .allowed_methods(vec!["GET", "POST"])
+                .allowed_methods(vec!["GET", "POST", "DELETE"])
                 .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
                 .allowed_header(header::CONTENT_TYPE)
                 .max_age(3600)            

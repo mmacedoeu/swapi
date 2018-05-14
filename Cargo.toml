@@ -22,7 +22,7 @@ flamer = { version = "^0.2.1", optional = true }
 
 [dependencies.actix-web]
 default_features = false
-features = ["tls", "brotli","flate2-c"]
+features = ["tls", "flate2-rust"]
 version = "0.6"
 
 [dependencies.clap]

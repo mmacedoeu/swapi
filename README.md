@@ -1,32 +1,32 @@
-# Swapi 
+# Swapi
 
 [![Build Status](https://travis-ci.org/mmacedoeu/swapi.svg?branch=master)](https://travis-ci.org/mmacedoeu/swapi)
 [![Language (Rust)](https://img.shields.io/badge/powered_by-Rust-blue.svg)](http://www.rust-lang.org/)
-
 
 Swapi is a CRSD Create Read Search Delete show case for the following features:
 
 ## Features
 
-  * Async/Sync [actors](https://github.com/actix/actix).
-  * Actor communication in a local/thread context.
-  * Uses [Futures](https://crates.io/crates/futures) for asynchronous message handling.
-  * HTTP1/HTTP2 support ([actix-web](https://github.com/actix/actix-web))
-  * Typed messages (No `Any` type).
-  * Patched Mentat Datomic's embedded [database](https://github.com/mmacedoeu/mentat)
-  * Multi-producer multi-consumer [channels](https://github.com/crossbeam-rs/crossbeam-channel)
-  * Json speculative parsing with [Pikkr](https://github.com/pikkr/pikkr) which is based on [Y. Li, N. R. Katsipoulakis, B. Chandramouli, J. Goldstein, and D. Kossmann. Mison: a fast JSON parser for data analytics. In *VLDB*, 2017](http://www.vldb.org/pvldb/vol10/p1118-li.pdf). Benchmark Result:
+* Async/Sync [actors](https://github.com/actix/actix).
+* Actor communication in a local/thread context.
+* Uses [Futures](https://crates.io/crates/futures) for asynchronous message handling.
+* HTTP1/HTTP2 support ([actix-web](https://github.com/actix/actix-web))
+* Typed messages (No `Any` type).
+* Patched Mentat Datomic's embedded [database](https://github.com/mmacedoeu/mentat)
+* Multi-producer multi-consumer [channels](https://github.com/crossbeam-rs/crossbeam-channel)
+* Json speculative parsing with [Pikkr](https://github.com/pikkr/pikkr) which is based on [Y. Li, N. R. Katsipoulakis, B. Chandramouli, J. Goldstein, and D. Kossmann. Mison: a fast JSON parser for data analytics. In *VLDB*, 2017](http://www.vldb.org/pvldb/vol10/p1118-li.pdf). Benchmark Result:
 ![](https://raw.githubusercontent.com/pikkr/pikkr/master/img/benchmark.png)
-  * REST interface
-  * CORS enabled
-  * Http client requests with actors based [Scatter-Gather](http://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html) Pattern
-  * Client requests with Least Recent Used frontal cache [LRU Time Cache](https://github.com/maidsafe/lru_time_cache)
+* REST interface
+* CORS enabled
+* Http client requests with actors based [Scatter-Gather](http://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html) Pattern
+* Client requests with Least Recent Used frontal cache [LRU Time Cache](https://github.com/maidsafe/lru_time_cache)
 
 ## Not Featured
-  * Json result paging
-  * Authentication
-  * database replication
-  * Json error handling
+
+* Json result paging
+* Authentication
+* database replication
+* Json error handling
 
 ## Install
 
@@ -46,11 +46,11 @@ Compile for release
 
 Should compile and work on all rust compiler supported [plataforms](https://forge.rust-lang.org/platform-support.html) but only tested for 64bit linux
 
-# Docker support
+### Docker support
 
 Ongoing testing for Docker based build and CI with Dockerfile present and almost ready
 
-# Cloud support
+### Cloud support
 
 Support for heroku based Cloud services with provided Procfile, should work on any cloud provider based on Docker and with minor manifest files on any Cloud provider
 
@@ -95,31 +95,31 @@ Run with no logging:
 
 Manual Testing is done with your preferred http client cli like [curl](https://github.com/curl/curl), [Httpie](https://github.com/jakubroztocil/httpie), [http-prompt](https://github.com/eliangcs/http-prompt), or any http test tool like [postman](https://www.getpostman.com/)
 
-# Read All
+### Read All
 
 `http :8080/sw`
 
-# Search by name
+### Search by name
 
 `http :8080/sw/?search=Tato`
 
-# Get by id
+### Get by id
 
 `http :8080/sw/<uuid>` like `http :8080/sw/0c298919-76f0-42d7-868b-0a0d70d14903`
 
-# Delete
+### Delete
 
 `http DELETE :8080/sw/<uuid>` like `http DELETE :8080/sw/0c298919-76f0-42d7-868b-0a0d70d14903`
 
-# Create
+### Create
 
-`http POST :8080/sw name=Hoth climate=frozen terrain='tundra, ice caves, mountain ranges`
+`http POST :8080/sw name=Hoth climate=frozen terrain='tundra, ice caves, mountain ranges'`
 
 ## Load testing
 
 Using [Vegeta](https://github.com/tsenart/vegeta) with 8 cores during 10 seconds and 5000 requests per second
 
-# For read all
+### For read all
 
 `echo "GET http://localhost:8080/sw" | vegeta attack -duration=10s -rate=5000 | tee results.bin | vegeta report -reporter=plot > plot.html`
 
@@ -134,11 +134,11 @@ Latencies     [mean, 50, 95, 99, max]  583.374µs, 457.817µs, 1.038971ms, 3.024
 Bytes In      [total, mean]            19950000, 399.00
 Bytes Out     [total, mean]            0, 0.00
 Success       [ratio]                  100.00%
-Status Codes  [code:count]             200:50000  
+Status Codes  [code:count]             200:50000
 Error Set:
 ```
 
-# Get by id
+### Get by id
 
 `echo "GET http://localhost:8080/sw/de09bbe9-a993-4ede-89aa-6713e8fc2976" | vegeta attack -duration=10s -rate=5000 | tee results.bin | vegeta report`
 
@@ -153,7 +153,7 @@ Status Codes  [code:count]             200:50000
 Error Set:
 ```
 
-# Search by name
+### Search by name
 
 `echo "GET http://127.0.0.1:8080/sw/?search=Tato" | vegeta attack -duration=10s -rate=5000 | tee results.bin | vegeta report`
 
@@ -164,7 +164,7 @@ Latencies     [mean, 50, 95, 99, max]  727.904µs, 482.15µs, 1.551523ms, 4.8610
 Bytes In      [total, mean]            5650000, 113.00
 Bytes Out     [total, mean]            0, 0.00
 Success       [ratio]                  100.00%
-Status Codes  [code:count]             200:50000  
+Status Codes  [code:count]             200:50000
 Error Set:
 ```
 
@@ -176,7 +176,7 @@ With histogram:
 Bucket         #      %       Histogram
 [0s,    1ms]   46790  93.58%  ######################################################################
 [1ms,   2ms]   1773   3.55%   ##
-[2ms,   3ms]   624    1.25%   
-[3ms,   4ms]   297    0.59%   
+[2ms,   3ms]   624    1.25%
+[3ms,   4ms]   297    0.59%
 [4ms,   +Inf]  516    1.03%
 ```

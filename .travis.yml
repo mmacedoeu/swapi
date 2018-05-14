@@ -1,7 +1,18 @@
-sudo: false
+sudo: required
 language: rust
 rust:
-  - nightly
-
+- nightly
 notifications:
   email: false
+after_success:
+- openssl aes-256-cbc -K $encrypted_b0334861a249_key -iv $encrypted_b0334861a249_iv
+  -in .snapcraft/travis_snapcraft.cfg -out .snapcraft/snapcraft.cfg -d
+services:
+- docker
+deploy:
+  'on':
+    branch: master
+  provider: script
+  script: docker run -v $(pwd):$(pwd) -t snapcore/snapcraft sh -c "apt update -qq
+    && cd $(pwd) && snapcraft && snapcraft push *.snap --release edge"
+  skip_cleanup: true

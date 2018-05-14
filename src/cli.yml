@@ -15,7 +15,8 @@ args:
   - interface:
       value_name: IP
       help: Specify the hostname portion of the REST API server, IP should be an interface's IP address, or all (all interfaces) or local.
-      default_value: local   
+      default_value: local
+      takes_value: true   
   - db:
       value_name: db
       help: Specify the base database storage path.
