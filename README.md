@@ -44,11 +44,21 @@ Should compile and work on all rust compiler supported [plataforms](https://forg
 
 ### Docker support
 
-Ongoing testing for Docker based build and CI with Dockerfile present and almost ready
+There is a docker image on docker hub
+
+`docker pull mmacedoeu/swapi`
+
+`docker run -p 8080:8080 mmacedoeu/swapi`
+
+### Snapd support
+
+Look for Snap install [instructions](https://docs.snapcraft.io/core/install) for your OS and install swapi with:
+
+`sudo snap install swapi --channel=edge --devmode`
 
 ### Cloud support
 
-Support for heroku based Cloud services with provided Procfile, should work on any cloud provider based on Docker and with minor manifest files on any Cloud provider
+Support for heroku based Cloud services with provided Procfile, should work on any cloud provider based on Heroku Procfile and with minor manifest files on any Cloud provider
 
 ## Usage
 
@@ -60,21 +70,19 @@ Display help:
 Star Wars Api
 
 USAGE:
-    swapi [OPTIONS] [ARGS]
+    swapi [OPTIONS]
 
 FLAGS:
     -h, --help       Prints help information
     -V, --version    Prints version information
 
 OPTIONS:
+    -d <db>                 Specify the base database storage path.
     -e <expire>             Time in seconds for cache expiration. default 7 days. [default: 604800]
+    -i <IP>                 Specify the hostname portion of the REST API server, IP should be an interface's IP address,
+                            or all (all interfaces) or local. [default: local]
     -l <LOG_PATTERN>        Sets a custom logging
-    -p <PORT>               Api tcp listener port
-
-ARGS:
-    <IP>    Specify the hostname portion of the REST API server, IP should be an interface's IP address, or all (all
-            interfaces) or local. [default: local]
-    <db>    Specify the base database storage path.
+    -p <PORT>               Api tcp listener port, default to environment variable PORT or 8080
 ```
 
 Run with full trace:
@@ -85,7 +93,7 @@ Run with no logging:
 
 `./target/release/swapi -l warn,actix_web::middleware::logger=warn`
 
-### Testing
+# Testing
 
 ## Manual Testing
 
