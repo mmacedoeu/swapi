@@ -1,5 +1,5 @@
 use futures::{Future,future};
-use actix_web::{HttpRequest, HttpResponse, HttpMessage, Error, AsyncResponder, Query};
+use actix_web::{HttpRequest, HttpResponse, HttpMessage, Error, AsyncResponder, Query, Body, http::{StatusCode, header}};
 use domain::{Planet, ReadPlanets, DeletePlanet, SearchPlanet, GetPlanet};
 use actors::getfilms;
 use uuid::Uuid;
@@ -146,4 +146,11 @@ pub fn id(req: HttpRequest<::actors::State>) -> Box<Future<Item=HttpResponse, Er
                     }
                 })  
     )         
+}
+
+pub fn redirect(_req: HttpRequest<::actors::State>) -> Box<Future<Item=HttpResponse, Error=Error>> {
+    let resp = HttpResponse::build(StatusCode::MOVED_PERMANENTLY)
+            .header(header::LOCATION, "https://github.com/mmacedoeu/swapi/")
+            .body(Body::Empty);
+    Box::new(future::ok(resp))
 }

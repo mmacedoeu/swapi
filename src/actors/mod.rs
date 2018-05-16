@@ -7,7 +7,7 @@ use std::sync::{Mutex, Arc};
 use std::clone::Clone;
 use errors::{Result, Error, ErrorKind};
 use mentat::{Store,TxReport, TypedValue, entity_builder::{BuildTerms,TermBuilder}
-    , QueryBuilder,Queryable, IntoResult, QueryInputs,KnownEntid};
+    , QueryBuilder,Queryable, IntoResult, QueryInputs,KnownEntid, Binding};
 use serde_json::value::Value;
 use uuid::Uuid;
 use futures::{Future, Stream};
@@ -54,10 +54,10 @@ impl Handler<Planet> for WriterExecutor {
     }
 }
 
-fn eav(row: Vec<TypedValue>) -> (KnownEntid, KnownEntid, TypedValue) {
+fn eav(row: Vec<Binding>) -> (KnownEntid, KnownEntid, TypedValue) {
     let mut row = row.into_iter();
     match (row.next(), row.next(), row.next()) {
-        (Some(TypedValue::Ref(e)), Some(TypedValue::Ref(a)), Some(v)) => {
+        (Some(Binding::Scalar(TypedValue::Ref(e))), Some(Binding::Scalar(TypedValue::Ref(a))), Some(Binding::Scalar(v))) => {
             (KnownEntid(e), KnownEntid(a), v)
         },
         _ => panic!("Incorrect query shape for 'eav' helper."),

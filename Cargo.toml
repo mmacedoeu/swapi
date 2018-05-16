@@ -30,7 +30,7 @@ features = ["yaml"]
 version = "2.31"
 
 [dependencies.mentat]
-git = "https://github.com/mmacedoeu/mentat"
+git = "https://github.com/mozilla/mentat"
 
 [dependencies.pikkr]
 git = "https://github.com/pikkr/pikkr.git"

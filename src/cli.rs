@@ -156,6 +156,7 @@ pub fn run<I, T>(args: I) -> Result<()> where
                     r.method(http::Method::GET).f(handlers::id);
                 })
                 .resource("/sw/", |r| r.method(http::Method::GET).with2(handlers::search))
+                .resource("/", |r| r.method(http::Method::GET).f(handlers::redirect))
                 .register())
         })
         .bind((inet.as_str(), port)).unwrap()
