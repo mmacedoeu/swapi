@@ -22,9 +22,7 @@ parts:
       - make
       - pkg-config
       - libssl-dev
-      - libbrotli-dev
       - libsqlite3-dev      
     stage-packages:
       - libssl-dev
-      - libbrotli-dev
       - libsqlite3-dev

@@ -15,7 +15,6 @@ RUN set -eux; \
         libc6-dev \
         libssl-dev \
         libsqlite3-dev \
-        libbrotli-dev \
         pkg-config \
         make \
         wget \
