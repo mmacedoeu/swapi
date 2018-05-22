@@ -22,7 +22,7 @@ flamer = { version = "^0.2.1", optional = true }
 
 [dependencies.actix-web]
 default_features = false
-features = ["tls", "flate2-rust"]
+features = ["tls", "flate2-rust", "brotli"]
 version = "0.6"
 
 [dependencies.clap]
@@ -42,3 +42,8 @@ version = "0.5"
 [features]
 default = []
 flame_it = ["flame", "flamer"]
+
+[profile.release]
+lto = true
+opt-level = 3
+codegen-units = 1

@@ -1,9 +1,10 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     SQLITE3_LIB_DIR=/usr/lib/x86_64-linux-gnu/libs \
     SQLITE3_INCLUDE_DIR=/usr/include \
+    RUSTFLAGS="-C target-cpu=native" \  
     PATH=/usr/local/cargo/bin:$PATH
 
 RUN set -eux; \
@@ -14,6 +15,7 @@ RUN set -eux; \
         libc6-dev \
         libssl-dev \
         libsqlite3-dev \
+        libbrotli-dev \
         pkg-config \
         make \
         wget \
@@ -35,6 +37,7 @@ RUN set -eux; \
         wget \
         pkg-config \
         make \
+        git \
         ; \
     rm -rf /var/lib/apt/lists/*;
 

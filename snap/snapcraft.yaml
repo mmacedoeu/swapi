@@ -17,9 +17,14 @@ parts:
     source: .
     plugin: rust
     rust-revision: nightly-2018-05-10
-    stage-packages:
+    build-packages:
       - g++
       - make
       - pkg-config
       - libssl-dev
+      - libbrotli-dev
+      - libsqlite3-dev      
+    stage-packages:
+      - libssl-dev
+      - libbrotli-dev
       - libsqlite3-dev

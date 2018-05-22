@@ -279,12 +279,12 @@ impl<'a> Handler<SearchResponse> for InboundCacheProcessor<'static> {
                     }
                 } else {
                     return Err(Error::from_kind(
-                        ErrorKind::Msg(String::from("unexpected data to parse"))
+                        ErrorKind::Msg(String::from(format!("unexpected data to parse, res[0] \t{:?}",res[0])))
                     ));                    
                 }
             } else {
                 return Err(Error::from_kind(
-                    ErrorKind::Msg(String::from("unexpected data to parse"))
+                    ErrorKind::Msg(String::from(format!("unexpected data to parse, len: \t{}",res.len())))
                 ));
             }
     }
